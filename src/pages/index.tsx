@@ -4,12 +4,9 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>E-Commerce</title>
+        <title>Home | e-commerce </title>
       </Head>
-
-      <main>
-        <h1>Hello World!</h1>
-      </main>
+      <h1>Hello World!</h1>
     </div>
   );
 }

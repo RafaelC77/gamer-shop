@@ -1,0 +1,75 @@
+.banner {
+    margin-top: 2rem;
+    position: relative;
+    height: 31.25rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bannerInfo {
+    display: flex;
+    flex-direction: column;
+
+    align-self: flex-end;
+
+    span:nth-child(1) {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--gray-300);
+    }
+
+    span:nth-child(2) {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-top: 0.25rem;
+
+        b {
+            font-weight: 400;
+            text-decoration: line-through;
+        }
+    }
+
+    span:nth-child(3) {
+        font-size: 7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    button {
+        width: fit-content;
+        padding: 0.5rem;
+        background: var(--green-500);
+        color: var(--gray-100);
+        border: 0;
+        border-radius: 4px;
+
+        &:hover {
+            opacity: 0.8;
+            transition: 0.1s;
+        }
+    }
+}
+
+.bannerImageContainer {
+    position: absolute;
+    left: 35%;
+}
+
+.descriptionContainer {
+    align-self: flex-end;
+    max-width: 300px;
+    text-align: right;
+
+    h2 {
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    p {
+        font-size: 0.875rem;
+        font-weight: 300;
+    }
+}

@@ -7,7 +7,6 @@ import logoImage from "../../assets/logo.png";
 import styles from "./styles.module.scss";
 
 export function Header() {
-  console.log(logoImage);
   return (
     <header className={styles.headerContainer}>
       <div className="container">

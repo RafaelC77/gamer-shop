@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Home | e-commerce </title>
+        <title>Home | Gamer Shop </title>
       </Head>
       <h1>Hello World!</h1>
     </div>

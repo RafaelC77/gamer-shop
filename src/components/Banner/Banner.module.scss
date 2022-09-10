@@ -1,7 +1,8 @@
-.banner {
+.bannerContent {
     margin-top: 2rem;
     position: relative;
     height: 31.25rem;
+    padding-bottom: 2rem;
 
     display: flex;
     justify-content: space-between;
@@ -17,7 +18,7 @@
     span:nth-child(1) {
         font-size: 2rem;
         font-weight: 700;
-        color: var(--gray-300);
+        color: var(--gray-200);
     }
 
     span:nth-child(2) {
@@ -57,6 +58,11 @@
     left: 35%;
 }
 
+.bannerImage {
+    height: 31.25rem;
+    width: 31.25rem;
+}
+
 .descriptionContainer {
     align-self: flex-end;
     max-width: 300px;
@@ -73,3 +79,4 @@
         font-weight: 300;
     }
 }
+

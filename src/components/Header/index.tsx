@@ -11,19 +11,23 @@ export function Header() {
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
         <Link href="/">
-          <div className={styles.logoContainer}>
-            <Image src={logoImage} className={styles.logo} alt="" />
-            <h1>
-              Gamer <span>Shop</span>
-            </h1>
-          </div>
+          <a>
+            <div className={styles.logoContainer}>
+              <Image src={logoImage} className={styles.logo} alt="" />
+              <h1>
+                Gamer <span>Shop</span>
+              </h1>
+            </div>
+          </a>
         </Link>
 
         <Link href="/">
-          <div className={styles.cartIconContainer}>
-            <ShoppingCart size={24} />
-            <span>1</span>
-          </div>
+          <a>
+            <div className={styles.cartIconContainer}>
+              <ShoppingCart size={24} />
+              <span>1</span>
+            </div>
+          </a>
         </Link>
       </div>
     </header>

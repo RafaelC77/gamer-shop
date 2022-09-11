@@ -9,7 +9,7 @@ import styles from "./styles.module.scss";
 export function Header() {
   return (
     <header className={styles.headerContainer}>
-      <div className="container">
+      <div className={styles.headerContent}>
         <Link href="/">
           <div className={styles.logoContainer}>
             <Image src={logoImage} className={styles.logo} alt="" />

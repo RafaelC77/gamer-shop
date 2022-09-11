@@ -1,3 +1,8 @@
+.bannerContainer {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
 .bannerContent {
     margin-top: 2rem;
     position: relative;
@@ -25,6 +30,7 @@
         font-size: 1.5rem;
         font-weight: 300;
         margin-top: 0.25rem;
+        color: var(--green-500);
 
         b {
             font-weight: 400;
@@ -47,7 +53,7 @@
         border-radius: 4px;
 
         &:hover {
-            opacity: 0.8;
+            background: var(--green-400);
             transition: 0.1s;
         }
     }
@@ -72,6 +78,7 @@
         font-weight: 700;
         font-size: 1.25rem;
         margin-bottom: 0.25rem;
+        color: var(--green-500);
     }
 
     p {
@@ -79,4 +86,3 @@
         font-weight: 300;
     }
 }
-

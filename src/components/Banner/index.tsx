@@ -4,7 +4,7 @@ import styles from "./Banner.module.scss";
 
 export function Banner() {
   return (
-    <div className="container">
+    <div className={styles.bannerContainer}>
       <div className={styles.bannerContent}>
         <div className={styles.bannerInfo}>
           <span>HyperX Cloud Stinger</span>

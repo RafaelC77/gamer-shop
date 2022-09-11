@@ -1,0 +1,24 @@
+.productsContainer {
+    background: var(--gray-100);
+    padding: 4rem 0;
+
+    h2 {
+        color: var(--gray-800);
+    }
+}
+
+.productsContent {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.productsList {
+    margin-top: 2rem;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    row-gap: 2.5rem;
+    justify-content: space-between;
+}
+

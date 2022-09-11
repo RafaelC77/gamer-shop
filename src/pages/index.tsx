@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Banner } from "../components/Banner";
+import { Products } from "../components/Products";
 
 import styles from "./home.module.scss";
 
@@ -10,8 +11,10 @@ export default function Home() {
         <title>Home | Gamer Shop </title>
       </Head>
 
-      <main className="container">
+      <main>
         <Banner />
+
+        <Products />
       </main>
     </div>
   );

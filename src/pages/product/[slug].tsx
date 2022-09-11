@@ -1,5 +1,6 @@
 import Image from "next/future/image";
 import testImage from "../../assets/banner-image.png";
+import { ChangeAmountButton } from "../../components/ChangeAmountButton";
 import styles from "./product.module.scss";
 
 export default function Product() {
@@ -35,9 +36,14 @@ export default function Product() {
             Commodi a rerum quaerat recusandae!
           </p>
           <span>R$ 179,99</span>
-          <div>
+          <div className={styles.amountInfo}>
             <span>Quantidade: </span>
-            <button>- 1 +</button>
+
+            <ChangeAmountButton
+              coffeeAmount={1}
+              decreaseCoffee={() => {}}
+              increaseCoffee={() => {}}
+            />
           </div>
           <button>Adicione ao carrinho</button>
         </div>

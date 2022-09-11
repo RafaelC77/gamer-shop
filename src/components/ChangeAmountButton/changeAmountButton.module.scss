@@ -1,0 +1,33 @@
+.buttonContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    input {
+      width: 4.5rem;
+      height:  2rem;
+        background: var(--gray-100);
+      border-radius: 6px;
+      border: 1px solid var(--gray-800);
+      padding: 0 0.5rem;
+      text-align: center;
+
+      &::placeholder {
+        color: var(--gray-800);
+      }
+    }
+}
+
+.decrementButton {
+    background: transparent;
+    border: 0;
+    position: absolute;
+    left: 0.5rem;
+}
+
+.incrementButton {
+    background: transparent;
+    border: 0;
+    position: absolute;
+    right: 0.5rem;
+}

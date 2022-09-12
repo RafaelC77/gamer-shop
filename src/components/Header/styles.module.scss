@@ -28,7 +28,7 @@
     position: relative;
 
     img {
-        color: var(--white);
+        color: var(--gray-800);
     }
 
     h1 {
@@ -40,6 +40,7 @@
     position: relative;
     height: 1.5rem;
     width: 1.5rem;
+    color: var(--white);
 
     span {
         position: absolute;
@@ -53,6 +54,7 @@
         border-radius: 999px;
 
         background-color: var(--green-500);
+        color: var(--white);
 
 
         display: flex;

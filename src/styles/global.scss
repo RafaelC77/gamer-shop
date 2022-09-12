@@ -19,6 +19,7 @@
 
     --green-400: #48BB78;
     --green-500: #38A169;
+    --green-700: #276749;
 }
 
 @media (max-width: 1080px) {
@@ -35,7 +36,7 @@
 
 body {
     background: var(--gray-100);
-    color: var(--white);
+    color: var(--gray-800);
     -webkit-font-smoothing: antialiased;
 }
 

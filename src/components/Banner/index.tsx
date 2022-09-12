@@ -1,32 +1,53 @@
 import Image from "next/image";
-import bannerImage from "../../assets/banner-image.png";
+import { formatPrice } from "../../utils/priceFormatter";
 import styles from "./Banner.module.scss";
 
-export function Banner() {
+interface BannerProps {
+  productName: string;
+  description: string;
+  discount: number;
+  fullPrice: number;
+  largeText: string;
+  image: string;
+}
+
+export function Banner({
+  productName,
+  description,
+  discount,
+  fullPrice,
+  largeText,
+  image,
+}: BannerProps) {
+  const discountPrice = fullPrice * ((100 - discount) / 100);
+  const formattedFullPrice = formatPrice(fullPrice / 100);
+  const formattedDiscountPrice = formatPrice(discountPrice / 100);
+
   return (
     <div className={styles.bannerContainer}>
       <div className={styles.bannerContent}>
         <div className={styles.bannerInfo}>
-          <span>HyperX Cloud Stinger</span>
+          <span>{productName}</span>
           <span>
-            44% OFF <b>R$ 381,41</b> R$ 179,99
+            {discount}% OFF <b>{formattedFullPrice}</b> {formattedDiscountPrice}
           </span>
-          <span>Headphone</span>
-          <button>Adicione ao carrinho</button>
+          <span>{largeText}</span>
+          <button>Comprar agora</button>
         </div>
 
         <div className={styles.bannerImageContainer}>
-          <Image src={bannerImage} alt="" className={styles.bannerImage} />
+          <Image
+            src={image}
+            width={500}
+            height={500}
+            alt=""
+            className={styles.bannerImage}
+          />
         </div>
 
         <div className={styles.descriptionContainer}>
           <h2>Descrição</h2>
-          <p>
-            Completa e versátil, a linha de headsets Cloud foi projetada para as
-            necessidades de qualquer nível de jogador. Independente do seu
-            sistema, estilo de jogo e características este headset irá te
-            surpreender.
-          </p>
+          <p>{description}</p>
         </div>
       </div>
     </div>

@@ -13,15 +13,14 @@ export function Header() {
         <Link href="/">
           <a>
             <div className={styles.logoContainer}>
-              <Image src={logoImage} className={styles.logo} alt="" />
               <h1>
-                Gamer <span>Shop</span>
+                Gamer<span>Shop</span>
               </h1>
             </div>
           </a>
         </Link>
 
-        <Link href="/">
+        <Link href="/cart">
           <a>
             <div className={styles.cartIconContainer}>
               <ShoppingCart size={24} />

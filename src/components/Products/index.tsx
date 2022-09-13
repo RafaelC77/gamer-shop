@@ -21,6 +21,7 @@ export function Products({ products }: ProductsProps) {
                 title={product.title}
                 image={product.image}
                 price={formatPrice(product.price / 100)}
+                slug={product.slug}
               />
             );
           })}

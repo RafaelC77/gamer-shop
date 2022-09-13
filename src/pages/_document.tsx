@@ -14,7 +14,6 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="shortcut icon" href="gamer-shop-logo.png" type="image/png" />
       </Head>
       <body>
         <Main />

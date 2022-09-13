@@ -1,54 +1,29 @@
 import { Card } from "./components/Card";
-import productImage from "../../assets/banner-image.png";
 import styles from "./Products.module.scss";
+import { IProduct } from "../../pages";
+import { formatPrice } from "../../utils/priceFormatter";
 
-export function Products() {
+interface ProductsProps {
+  products: IProduct[];
+}
+
+export function Products({ products }: ProductsProps) {
   return (
     <section className={styles.productsContainer}>
       <div className={styles.productsContent}>
         <h2>Produtos</h2>
 
         <ul className={styles.productsList}>
-          <Card
-            title="HyperX Cloud Stinger"
-            image={productImage}
-            price="179,99"
-          />
-          <Card
-            title="HyperX Cloud Stinger"
-            image={productImage}
-            price="179,99"
-          />
-          <Card
-            title="HyperX Cloud Stinger"
-            image={productImage}
-            price="179,99"
-          />
-          <Card
-            title="HyperX Cloud Stinger"
-            image={productImage}
-            price="179,99"
-          />
-          <Card
-            title="HyperX Cloud Stinger"
-            image={productImage}
-            price="179,99"
-          />
-          <Card
-            title="HyperX Cloud Stinger"
-            image={productImage}
-            price="179,99"
-          />
-          <Card
-            title="HyperX Cloud Stinger"
-            image={productImage}
-            price="179,99"
-          />
-          <Card
-            title="HyperX Cloud Stinger"
-            image={productImage}
-            price="179,99"
-          />
+          {products.map((product) => {
+            return (
+              <Card
+                key={product.slug}
+                title={product.title}
+                image={product.image}
+                price={formatPrice(product.price / 100)}
+              />
+            );
+          })}
         </ul>
       </div>
     </section>

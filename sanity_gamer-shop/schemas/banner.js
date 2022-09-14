@@ -38,5 +38,14 @@ export default {
       title: "FullPrice",
       type: "number",
     },
+    {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "product",
+        maxLength: 90,
+      },
+    },
   ],
 };

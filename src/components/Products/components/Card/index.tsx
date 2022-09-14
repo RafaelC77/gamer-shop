@@ -20,8 +20,6 @@ export function Card({ title, image, price, slug }: CardProps) {
     setCartItem({ name: title, image, price, amount: 1 });
   }
 
-  console.log(shoppingCart);
-
   return (
     <li>
       <Link href={`/product/${slug}`}>

@@ -16,6 +16,11 @@
     list-style: none;
     gap: 0.5rem;
     margin-top: 1rem;
+
+    button {
+        appearance: none;
+        border: 0;
+    }
 }
 
 .detailImage {
@@ -76,4 +81,8 @@
     display: flex;
     gap: 0.5rem;
     align-items: center;
+}
+
+.selectedImage {
+    background: var(--green-500);
 }

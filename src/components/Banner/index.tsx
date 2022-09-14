@@ -10,6 +10,7 @@ interface BannerProps {
   fullPrice: number;
   largeText: string;
   image: string;
+  slug: string;
 }
 
 export function Banner({
@@ -19,6 +20,7 @@ export function Banner({
   fullPrice,
   largeText,
   image,
+  slug,
 }: BannerProps) {
   const discountPrice = fullPrice * ((100 - discount) / 100);
   const formattedFullPrice = formatPrice(fullPrice / 100);
@@ -33,7 +35,7 @@ export function Banner({
             {discount}% OFF <b>{formattedFullPrice}</b> {formattedDiscountPrice}
           </span>
           <span>{largeText}</span>
-          <Link href="/product/hyperx-cloud-stinger">
+          <Link href={`/product/${slug}`}>
             <button>Comprar agora</button>
           </Link>
         </div>

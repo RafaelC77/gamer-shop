@@ -12,6 +12,7 @@ export interface IBanner {
   fullPrice: number;
   largeText: string;
   image: string;
+  slug: string;
 }
 
 export interface IProduct {
@@ -27,8 +28,15 @@ interface HomeProps {
 }
 
 export default function Home({ banner, products }: HomeProps) {
-  const { productName, description, discount, fullPrice, largeText, image } =
-    banner;
+  const {
+    productName,
+    description,
+    discount,
+    fullPrice,
+    largeText,
+    image,
+    slug,
+  } = banner;
 
   return (
     <div>
@@ -44,6 +52,7 @@ export default function Home({ banner, products }: HomeProps) {
           fullPrice={fullPrice}
           largeText={largeText}
           image={urlFor(image).url()}
+          slug={slug}
         />
 
         <Products products={products} />
@@ -63,6 +72,7 @@ export async function getStaticProps() {
     fullPrice: bannerResponse[0].fullPrice,
     largeText: bannerResponse[0].largeText,
     image: bannerResponse[0].image,
+    slug: bannerResponse[0].slug.current,
   };
 
   const productsQuery = '*[_type == "product"]';
@@ -82,6 +92,6 @@ export async function getStaticProps() {
       banner,
       products,
     },
-    /* revalidate: 60 * 60, // 1 hour */
+    revalidate: 60 * 60, // 1 hour
   };
 }

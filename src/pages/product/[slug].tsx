@@ -18,8 +18,9 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
-  const { shoppingCart, setCartItem } = useContext(CartContext);
+  const { setCartItem } = useContext(CartContext);
   const [itemAmount, setItemAmount] = useState(1);
+  const [selectedImage, setSelectedImage] = useState<string>(product.images[0]);
 
   function handleAddItem() {
     setCartItem({
@@ -42,14 +43,12 @@ export default function Product({ product }: ProductProps) {
     setItemAmount((prevState) => prevState - 1);
   }
 
-  console.log(shoppingCart);
-
   return (
     <main className={styles.productContainer}>
       <div className={styles.productContent}>
         <div>
           <Image
-            src={product.images[0]}
+            src={selectedImage}
             width={400}
             height={400}
             alt=""
@@ -60,13 +59,17 @@ export default function Product({ product }: ProductProps) {
             {product.images.map((image) => {
               return (
                 <li key={image}>
-                  <Image
-                    src={image}
-                    width={64}
-                    height={64}
-                    alt=""
-                    className={styles.smallImage}
-                  />
+                  <button onClick={() => setSelectedImage(image)}>
+                    <Image
+                      src={image}
+                      width={64}
+                      height={64}
+                      alt=""
+                      className={`${styles.smallImage} ${
+                        selectedImage === image ? styles.selectedImage : ""
+                      }`}
+                    />
+                  </button>
                 </li>
               );
             })}
@@ -136,6 +139,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       product,
     },
-    /* revalidate: 60 * 60, //1 hour */
+    revalidate: 60 * 60, //1 hour
   };
 };

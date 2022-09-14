@@ -3,6 +3,8 @@ import Link from "next/link";
 import styles from "./styles.module.scss";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import Image from "next/image";
+import logo from "../../assets/gamer-shop-logo.png";
 
 export function Header() {
   const { shoppingCart } = useContext(CartContext);
@@ -14,9 +16,7 @@ export function Header() {
         <Link href="/">
           <a>
             <div className={styles.logoContainer}>
-              <h1>
-                Gamer<span>Shop</span>
-              </h1>
+              <Image src={logo} alt="" width={80} height={80} />
             </div>
           </a>
         </Link>

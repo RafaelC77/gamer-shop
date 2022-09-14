@@ -21,8 +21,20 @@ interface CartContextProviderProps {
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [shoppingCart, setShoppingCart] = useState<ICartItem[]>([]);
 
-  function setCartItem(item: ICartItem) {
-    setShoppingCart((prevState) => [...prevState, { ...item }]);
+  function setCartItem(newItem: ICartItem) {
+    const newCart = [...shoppingCart];
+
+    const itemExists = newCart.find((item) => item.name === newItem.name);
+
+    if (!!itemExists) {
+      const itemIndex = newCart.indexOf(itemExists);
+
+      newCart[itemIndex].amount = itemExists.amount + newItem.amount;
+
+      return;
+    }
+
+    setShoppingCart((prevState) => [...prevState, { ...newItem }]);
   }
 
   return (

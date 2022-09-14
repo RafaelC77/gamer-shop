@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { formatPrice } from "../../utils/priceFormatter";
 import styles from "./Banner.module.scss";
 
@@ -32,7 +33,9 @@ export function Banner({
             {discount}% OFF <b>{formattedFullPrice}</b> {formattedDiscountPrice}
           </span>
           <span>{largeText}</span>
-          <button>Comprar agora</button>
+          <Link href="/product/hyperx-cloud-stinger">
+            <button>Comprar agora</button>
+          </Link>
         </div>
 
         <div className={styles.bannerImageContainer}>

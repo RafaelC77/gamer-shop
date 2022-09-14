@@ -10,6 +10,7 @@ interface ICartItem {
 interface CartContextType {
   shoppingCart: any[];
   setCartItem: (item: ICartItem) => void;
+  updateCart: (newCart: ICartItem[]) => void;
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -37,8 +38,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setShoppingCart((prevState) => [...prevState, { ...newItem }]);
   }
 
+  function updateCart(newCart: ICartItem[]) {
+    setShoppingCart(newCart);
+  }
+
   return (
-    <CartContext.Provider value={{ shoppingCart, setCartItem }}>
+    <CartContext.Provider value={{ shoppingCart, setCartItem, updateCart }}>
       {children}
     </CartContext.Provider>
   );

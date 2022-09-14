@@ -1,27 +1,58 @@
 import Image from "next/future/image";
 import { Trash } from "phosphor-react";
 import { useContext } from "react";
-import testImage from "../../assets/banner-image.png";
 import { ChangeAmountButton } from "../../components/ChangeAmountButton";
 import { CartContext } from "../../contexts/CartContext";
 import { formatPrice } from "../../utils/priceFormatter";
 import styles from "./cart.module.scss";
 
 export default function Cart() {
-  const { shoppingCart } = useContext(CartContext);
+  const { shoppingCart, updateCart } = useContext(CartContext);
 
-  const formattedCart = shoppingCart.map((item) => {
+  const formattedCart = shoppingCart?.map((item) => {
     return {
       ...item,
       subTotal: item.price * item.amount,
     };
   });
 
-  const total = formattedCart.reduce((sumTotal, item) => {
+  const total = formattedCart?.reduce((sumTotal, item) => {
     return sumTotal + item.subTotal;
   }, 0);
 
-  const isEmpty = shoppingCart.length === 0;
+  const isEmpty = shoppingCart?.length <= 0;
+
+  function handleDecreaseItem(name: string) {
+    const newCart = [...shoppingCart];
+    const selectedItem = newCart.find((item) => item.name === name);
+    const itemIndex = newCart.indexOf(selectedItem);
+
+    if (selectedItem.amount <= 1) {
+      return;
+    }
+
+    newCart[itemIndex].amount = selectedItem.amount - 1;
+
+    updateCart(newCart);
+  }
+
+  function handleIncreaseItem(name: string) {
+    const newCart = [...shoppingCart];
+    const selectedItem = newCart.find((item) => item.name === name);
+    const itemIndex = newCart.indexOf(selectedItem);
+
+    newCart[itemIndex].amount = selectedItem.amount + 1;
+
+    updateCart(newCart);
+  }
+
+  function handleRemoveItem(name: string) {
+    const previousCart = [...shoppingCart];
+
+    const newCart = previousCart.filter((item) => item.name !== name);
+
+    updateCart(newCart);
+  }
 
   return (
     <div className={styles.cartContainer}>
@@ -40,7 +71,7 @@ export default function Cart() {
           </thead>
 
           <tbody>
-            {formattedCart.map((item) => {
+            {formattedCart?.map((item) => {
               return (
                 <tr key={item.name}>
                   <td>
@@ -59,15 +90,15 @@ export default function Cart() {
                   <td>
                     <ChangeAmountButton
                       itemAmount={item.amount}
-                      decreaseItem={() => {}}
-                      increaseItem={() => {}}
+                      decreaseItem={() => handleDecreaseItem(item.name)}
+                      increaseItem={() => handleIncreaseItem(item.name)}
                     />
                   </td>
                   <td>
                     <span>{formatPrice(item.subTotal / 100)}</span>
                   </td>
                   <td>
-                    <button>
+                    <button onClick={() => handleRemoveItem(item.name)}>
                       <Trash weight="fill" size={24} />
                     </button>
                   </td>

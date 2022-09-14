@@ -30,6 +30,18 @@ export default function Product({ product }: ProductProps) {
     });
   }
 
+  function handleIncreaseItem() {
+    setItemAmount((prevState) => prevState + 1);
+  }
+
+  function handleDecreaseItem() {
+    if (itemAmount <= 1) {
+      return;
+    }
+
+    setItemAmount((prevState) => prevState - 1);
+  }
+
   console.log(shoppingCart);
 
   return (
@@ -70,9 +82,9 @@ export default function Product({ product }: ProductProps) {
             <span>Quantidade: </span>
 
             <ChangeAmountButton
-              itemAmount={1}
-              decreaseItem={() => {}}
-              increaseItem={() => {}}
+              itemAmount={itemAmount}
+              decreaseItem={handleDecreaseItem}
+              increaseItem={handleIncreaseItem}
             />
           </div>
           <button onClick={handleAddItem}>Adicione ao carrinho</button>

@@ -7,7 +7,7 @@ import { CartContext } from "../../contexts/CartContext";
 export function Header() {
   const { shoppingCart } = useContext(CartContext);
 
-  const isShoppingCartEmpty = shoppingCart.length <= 0;
+  const isShoppingCartEmpty = shoppingCart?.length <= 0;
   return (
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
@@ -25,7 +25,7 @@ export function Header() {
           <a>
             <div className={styles.cartIconContainer}>
               <ShoppingCart size={24} />
-              {!isShoppingCartEmpty && <span>{shoppingCart.length}</span>}
+              {!isShoppingCartEmpty && <span>{shoppingCart?.length}</span>}
             </div>
           </a>
         </Link>

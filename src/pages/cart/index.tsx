@@ -110,7 +110,7 @@ export default function Cart() {
       )}
 
       <footer>
-        <button>Finalizar pedido</button>
+        <button disabled={isEmpty && true}>Finalizar pedido</button>
 
         <div className={styles.cartTotal}>
           <span>TOTAL</span>

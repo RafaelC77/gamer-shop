@@ -2,29 +2,29 @@ import { Minus, Plus } from "phosphor-react";
 import styles from "./changeAmountButton.module.scss";
 
 interface ChangeAmountButtonProps {
-  coffeeAmount: number;
-  increaseCoffee: () => void;
-  decreaseCoffee: () => void;
+  itemAmount: number;
+  increaseItem: () => void;
+  decreaseItem: () => void;
 }
 
 export function ChangeAmountButton({
-  coffeeAmount,
-  increaseCoffee,
-  decreaseCoffee,
+  itemAmount,
+  increaseItem,
+  decreaseItem,
 }: ChangeAmountButtonProps) {
   return (
     <div className={styles.buttonContainer}>
-      <button className={styles.decrementButton} onClick={decreaseCoffee}>
+      <button className={styles.decrementButton} onClick={decreaseItem}>
         <Minus />
       </button>
       <input
         type="number"
         id="price"
         step={1}
-        placeholder={String(coffeeAmount)}
+        placeholder={String(itemAmount)}
         readOnly
       />
-      <button className={styles.incrementButton} onClick={increaseCoffee}>
+      <button className={styles.incrementButton} onClick={increaseItem}>
         <Plus />
       </button>
     </div>

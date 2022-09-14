@@ -20,7 +20,7 @@ export function Products({ products }: ProductsProps) {
                 key={product.slug}
                 title={product.title}
                 image={product.image}
-                price={formatPrice(product.price / 100)}
+                price={product.price}
                 slug={product.slug}
               />
             );

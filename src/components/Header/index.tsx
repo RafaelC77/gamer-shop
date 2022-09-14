@@ -1,12 +1,13 @@
 import { ShoppingCart } from "phosphor-react";
 import Link from "next/link";
-import Image from "next/future/image";
-
-import logoImage from "../../assets/logo.png";
-
 import styles from "./styles.module.scss";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 export function Header() {
+  const { shoppingCart } = useContext(CartContext);
+
+  const isShoppingCartEmpty = shoppingCart.length <= 0;
   return (
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
@@ -24,7 +25,7 @@ export function Header() {
           <a>
             <div className={styles.cartIconContainer}>
               <ShoppingCart size={24} />
-              <span>1</span>
+              {!isShoppingCartEmpty && <span>{shoppingCart.length}</span>}
             </div>
           </a>
         </Link>

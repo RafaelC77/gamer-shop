@@ -2,15 +2,26 @@ import { Plus, ShoppingCart } from "phosphor-react";
 import Image from "next/future/image";
 import styles from "./card.module.scss";
 import Link from "next/link";
+import { useContext } from "react";
+import { CartContext } from "../../../../contexts/CartContext";
+import { formatPrice } from "../../../../utils/priceFormatter";
 
 interface CardProps {
   title: string;
   image: string;
-  price: string;
+  price: number;
   slug: string;
 }
 
 export function Card({ title, image, price, slug }: CardProps) {
+  const { shoppingCart, setCartItem } = useContext(CartContext);
+
+  function handleAddItem() {
+    setCartItem({ name: title, image, price, amount: 1 });
+  }
+
+  console.log(shoppingCart);
+
   return (
     <li>
       <Link href={`/product/${slug}`}>
@@ -24,17 +35,17 @@ export function Card({ title, image, price, slug }: CardProps) {
           />
 
           <h3>{title}</h3>
-
-          <div className={styles.productInfo}>
-            <span className={styles.productPrice}>{price}</span>
-            <button>
-              <Plus />
-
-              <ShoppingCart />
-            </button>
-          </div>
         </a>
       </Link>
+
+      <div className={styles.productInfo}>
+        <span className={styles.productPrice}>{formatPrice(price / 100)}</span>
+        <button onClick={handleAddItem}>
+          <Plus />
+
+          <ShoppingCart />
+        </button>
+      </div>
     </li>
   );
 }

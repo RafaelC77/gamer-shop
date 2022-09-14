@@ -3,6 +3,10 @@
     max-width: 1120px;
     margin: 0 auto;
 
+    > p {
+        text-align: center;
+    }
+
     footer {
         margin-top: 2rem;
         display: flex;

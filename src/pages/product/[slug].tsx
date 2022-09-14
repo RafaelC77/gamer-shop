@@ -1,6 +1,8 @@
 import { GetStaticProps } from "next";
 import Image from "next/future/image";
+import { useContext, useState } from "react";
 import { ChangeAmountButton } from "../../components/ChangeAmountButton";
+import { CartContext } from "../../contexts/CartContext";
 import { client, urlFor } from "../../services/sanity";
 import { formatPrice } from "../../utils/priceFormatter";
 import styles from "./product.module.scss";
@@ -16,6 +18,20 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
+  const { shoppingCart, setCartItem } = useContext(CartContext);
+  const [itemAmount, setItemAmount] = useState(1);
+
+  function handleAddItem() {
+    setCartItem({
+      name: product.name,
+      image: product.images[0],
+      price: product.price,
+      amount: itemAmount,
+    });
+  }
+
+  console.log(shoppingCart);
+
   return (
     <main className={styles.productContainer}>
       <div className={styles.productContent}>
@@ -54,12 +70,12 @@ export default function Product({ product }: ProductProps) {
             <span>Quantidade: </span>
 
             <ChangeAmountButton
-              coffeeAmount={1}
-              decreaseCoffee={() => {}}
-              increaseCoffee={() => {}}
+              itemAmount={1}
+              decreaseItem={() => {}}
+              increaseItem={() => {}}
             />
           </div>
-          <button>Adicione ao carrinho</button>
+          <button onClick={handleAddItem}>Adicione ao carrinho</button>
         </div>
       </div>
     </main>

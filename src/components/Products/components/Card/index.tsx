@@ -14,16 +14,16 @@ interface CardProps {
 }
 
 export function Card({ title, image, price, slug }: CardProps) {
-  const { shoppingCart, setCartItem } = useContext(CartContext);
+  const { setCartItem } = useContext(CartContext);
 
   function handleAddItem() {
     setCartItem({ name: title, image, price, amount: 1 });
   }
 
   return (
-    <li>
+    <li className={styles.cardContainer}>
       <Link href={`/product/${slug}`}>
-        <a className={styles.cardContainer}>
+        <a>
           <Image
             src={image}
             width={240}

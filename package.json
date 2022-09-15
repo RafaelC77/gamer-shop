@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "@sanity/image-url": "^1.0.1",
-    "next": "12.3.0",
+    "@stripe/react-stripe-js": "^1.10.0",
+    "@stripe/stripe-js": "^1.36.0",
+    "next": "^12.3.0",
     "next-sanity": "^0.8.4",
     "phosphor-react": "^1.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "^1.54.9"
+    "sass": "^1.54.9",
+    "stripe": "^10.8.0"
   },
   "devDependencies": {
     "@types/node": "18.7.16",

@@ -1,4 +1,5 @@
 import Image from "next/future/image";
+import Link from "next/link";
 import { Trash } from "phosphor-react";
 import { useContext } from "react";
 import { ChangeAmountButton } from "../../components/ChangeAmountButton";
@@ -110,7 +111,9 @@ export default function Cart() {
       )}
 
       <footer>
-        <button disabled={isEmpty && true}>Finalizar pedido</button>
+        <Link href="/checkout">
+          <button disabled={isEmpty}>Finalizar pedido</button>
+        </Link>
 
         <div className={styles.cartTotal}>
           <span>TOTAL</span>

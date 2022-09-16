@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "../../../../contexts/CartContext";
 import { formatPrice } from "../../../../utils/priceFormatter";
+import { toast } from "react-toastify";
 
 interface CardProps {
   title: string;
@@ -18,6 +19,10 @@ export function Card({ title, image, price, slug }: CardProps) {
 
   function handleAddItem() {
     setCartItem({ name: title, image, price, amount: 1 });
+
+    toast.success("Item adicionado ao carrinho!", {
+      position: "top-right",
+    });
   }
 
   return (

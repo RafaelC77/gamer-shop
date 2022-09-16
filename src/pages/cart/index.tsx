@@ -1,12 +1,14 @@
 import Image from "next/future/image";
 import { Trash } from "phosphor-react";
 import { useContext } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 import { ChangeAmountButton } from "../../components/ChangeAmountButton";
 import { CompleteOrderButton } from "../../components/CompleteOrderButton";
 import { CartContext } from "../../contexts/CartContext";
 import { formatPrice } from "../../utils/priceFormatter";
 
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./cart.module.scss";
 
 export default function Cart() {
@@ -55,6 +57,10 @@ export default function Cart() {
     const newCart = previousCart.filter((item) => item.name !== name);
 
     updateCart(newCart);
+
+    toast.error("Produto removido do carrinho!", {
+      position: "top-right",
+    });
   }
 
   return (
@@ -120,6 +126,8 @@ export default function Cart() {
           <strong>{formatPrice(total / 100)}</strong>
         </div>
       </footer>
+
+      <ToastContainer />
     </div>
   );
 }

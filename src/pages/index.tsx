@@ -1,9 +1,11 @@
 import Head from "next/head";
+import { ToastContainer } from "react-toastify";
 import { Banner } from "../components/Banner";
 import { Products } from "../components/Products";
 import { client, urlFor } from "../services/sanity";
 
 import styles from "./home.module.scss";
+import "react-toastify/dist/ReactToastify.css";
 
 export interface IBanner {
   productName: string;
@@ -57,6 +59,8 @@ export default function Home({ banner, products }: HomeProps) {
 
         <Products products={products} />
       </main>
+
+      <ToastContainer />
     </div>
   );
 }

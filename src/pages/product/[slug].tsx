@@ -1,10 +1,12 @@
 import { GetStaticProps } from "next";
 import Image from "next/future/image";
 import { useContext, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import { ChangeAmountButton } from "../../components/ChangeAmountButton";
 import { CartContext } from "../../contexts/CartContext";
 import { client, urlFor } from "../../services/sanity";
 import { formatPrice } from "../../utils/priceFormatter";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./product.module.scss";
 
 interface ProductProps {
@@ -28,6 +30,10 @@ export default function Product({ product }: ProductProps) {
       image: product.images[0],
       price: product.price,
       amount: itemAmount,
+    });
+
+    toast.success("Item adicionado ao carrinho!", {
+      position: "top-right",
     });
   }
 
@@ -93,6 +99,7 @@ export default function Product({ product }: ProductProps) {
           <button onClick={handleAddItem}>Adicione ao carrinho</button>
         </div>
       </div>
+      <ToastContainer />
     </main>
   );
 }

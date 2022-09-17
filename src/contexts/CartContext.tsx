@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useRef, useState } from "react";
 
 export interface ICartItem {
   name: string;
@@ -11,6 +11,7 @@ interface CartContextType {
   shoppingCart: any[];
   setCartItem: (item: ICartItem) => void;
   updateCart: (newCart: ICartItem[]) => void;
+  resetCart: () => void;
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -21,6 +22,18 @@ interface CartContextProviderProps {
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [shoppingCart, setShoppingCart] = useState<ICartItem[]>([]);
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    if (isMounted.current) {
+      localStorage.setItem(
+        "@gamer-shop:cart-1.0.0",
+        JSON.stringify(shoppingCart)
+      );
+    } else {
+      isMounted.current = true;
+    }
+  }, [shoppingCart]);
 
   function setCartItem(newItem: ICartItem) {
     const newCart = [...shoppingCart];
@@ -42,8 +55,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setShoppingCart(newCart);
   }
 
+  function resetCart() {
+    setShoppingCart([]);
+  }
+
   return (
-    <CartContext.Provider value={{ shoppingCart, setCartItem, updateCart }}>
+    <CartContext.Provider
+      value={{ shoppingCart, setCartItem, updateCart, resetCart }}
+    >
       {children}
     </CartContext.Provider>
   );

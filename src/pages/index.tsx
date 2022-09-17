@@ -1,10 +1,12 @@
 import Head from "next/head";
+import { useContext, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+
 import { Banner } from "../components/Banner";
 import { Products } from "../components/Products";
 import { client, urlFor } from "../services/sanity";
+import { CartContext } from "../contexts/CartContext";
 
-import styles from "./home.module.scss";
 import "react-toastify/dist/ReactToastify.css";
 
 export interface IBanner {
@@ -39,6 +41,15 @@ export default function Home({ banner, products }: HomeProps) {
     image,
     slug,
   } = banner;
+  const { updateCart } = useContext(CartContext);
+
+  useEffect(() => {
+    const storedState = localStorage.getItem("@gamer-shop:cart-1.0.0");
+
+    if (storedState) {
+      updateCart(JSON.parse(storedState));
+    }
+  }, []);
 
   return (
     <div>

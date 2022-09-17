@@ -1,8 +1,16 @@
 import Link from "next/link";
 import { Handbag } from "phosphor-react";
+import { useContext, useEffect, useLayoutEffect } from "react";
+import { CartContext } from "../../contexts/CartContext";
 import styles from "./styles.module.scss";
 
 export default function Success() {
+  const { resetCart } = useContext(CartContext);
+
+  useEffect(() => {
+    resetCart();
+  }, []);
+
   return (
     <div className={styles.successContainer}>
       <Handbag weight="fill" size={40} />

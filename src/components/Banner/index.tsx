@@ -45,6 +45,7 @@ export function Banner({
             src={image}
             layout="fill"
             alt=""
+            priority
             className={styles.bannerImage}
           />
         </div>

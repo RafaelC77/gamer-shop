@@ -4,11 +4,11 @@
 }
 
 .bannerContent {
-    max-width: 1120px;
+    max-width: 74rem;
     margin: 0 auto;
     position: relative;
     height: 32.25rem;
-    padding-bottom: 2rem;
+    padding: 0 2rem 2rem;
 
     display: flex;
     justify-content: space-between;
@@ -53,6 +53,7 @@
         color: var(--gray-100);
         border: 0;
         border-radius: 4px;
+        z-index: 99;
 
         &:hover {
             background: var(--green-400);
@@ -64,6 +65,8 @@
 .bannerImageContainer {
     position: absolute;
     left: 35%;
+    height: 31.25rem;
+    width: 31.25rem;
 }
 
 .bannerImage {
@@ -75,6 +78,7 @@
     align-self: flex-end;
     max-width: 300px;
     text-align: right;
+    margin-left: 1rem;
 
     h2 {
         font-weight: 700;
@@ -87,5 +91,52 @@
         font-size: 0.875rem;
         font-weight: 300;
         color: var(--gray-100);
+    }
+}
+
+@media (max-width: 1080px) {
+    .bannerInfo {
+        span:nth-child(3) {
+            font-size: 6rem;
+        }
+    }
+
+    .bannerImageContainer {
+        height: 27rem;
+        width: 27rem;
+    }
+}
+
+@media (max-width: 780px) {
+    .bannerContent {
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .bannerInfo {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 560px) {
+    .bannerInfo {
+        span:nth-child(1) {
+            font-size: 1.5rem;
+        }
+
+        span:nth-child(2) {
+            font-size: 1rem;
+        }
+
+        span:nth-child(3) {
+            font-size: 3rem;
+        }
+    }
+
+    .bannerImageContainer {
+        height: 20rem;
+        width: 20rem;
+        top: 20%;
+        left: 10%;
     }
 }

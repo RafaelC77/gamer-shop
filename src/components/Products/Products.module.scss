@@ -8,8 +8,9 @@
 }
 
 .productsContent {
-    max-width: 1120px;
+    max-width: 74rem;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .productsList {
@@ -17,8 +18,14 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 2rem;
+    column-gap: 1rem;
     row-gap: 2.5rem;
     justify-content: space-between;
 }
 
+@media (max-width: 780px) {
+    .productsList {
+        justify-content: space-around;
+
+    }
+}

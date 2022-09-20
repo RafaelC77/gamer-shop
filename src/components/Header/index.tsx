@@ -16,7 +16,7 @@ export function Header() {
         <Link href="/">
           <a>
             <div className={styles.logoContainer}>
-              <Image src={logo} alt="" width={80} height={80} />
+              <Image src={logo} alt="" layout="fill" />
             </div>
           </a>
         </Link>

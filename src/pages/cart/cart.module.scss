@@ -1,9 +1,9 @@
 .cartContainer {
-    padding: 4rem 0;
-    max-width: 1120px;
+    padding: 4rem 2rem;
+    max-width: 74rem;
     margin: 0 auto;
 
-    > p {
+    >p {
         text-align: center;
     }
 
@@ -37,7 +37,7 @@
         font-size: 1.125rem;
     }
 
-    td > button {
+    td>button {
         background: none;
         border: 0;
         padding: 0.25rem;
@@ -54,9 +54,10 @@
     }
 }
 
-.cartImage {
+.imageContainer {
     height: 6rem;
     width: 6rem;
+    position: relative;
 }
 
 .cartTotal {
@@ -70,5 +71,42 @@
 
     strong {
         font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .imageContainer {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    .cartItemsTable {
+        strong {
+            font-size: 0.875rem;
+        }
+
+        span {
+            font-size: 0.8125rem;
+        }
+    }
+
+    .cartContainer {
+        padding: 2rem 1rem;
+
+        footer {
+            flex-direction: column-reverse;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+    }
+
+    .cartTotal {
+        span {
+            font-size: 0.75rem;
+        }
+
+        strong {
+            font-size: 1.25rem;
+        }
     }
 }

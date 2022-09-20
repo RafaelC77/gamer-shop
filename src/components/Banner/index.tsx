@@ -43,8 +43,7 @@ export function Banner({
         <div className={styles.bannerImageContainer}>
           <Image
             src={image}
-            width={500}
-            height={500}
+            layout="fill"
             alt=""
             className={styles.bannerImage}
           />

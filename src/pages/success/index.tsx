@@ -13,15 +13,17 @@ export default function Success() {
 
   return (
     <div className={styles.successContainer}>
-      <Handbag weight="fill" size={40} />
+      <div className={styles.successContent}>
+        <Handbag weight="fill" size={40} />
 
-      <h2>Agradecemos pela sua compra!</h2>
+        <h2>Agradecemos pela sua compra!</h2>
 
-      <p>O seu recibo foi enviado por e-mail.</p>
+        <p>O seu recibo foi enviado por e-mail.</p>
 
-      <Link href="/">
-        <button>Continuar comprando</button>
-      </Link>
+        <Link href="/">
+          <button>Continuar comprando</button>
+        </Link>
+      </div>
     </div>
   );
 }

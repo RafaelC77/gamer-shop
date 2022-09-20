@@ -1,34 +1,53 @@
 .buttonContainer {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 4.5rem;
+
+  input {
     width: 4.5rem;
+    height: 2rem;
+    background: var(--gray-100);
+    border-radius: 6px;
+    border: 1px solid var(--gray-800);
+    padding: 0 0.5rem;
+    text-align: center;
 
-    input {
-      width: 4.5rem;
-      height:  2rem;
-        background: var(--gray-100);
-      border-radius: 6px;
-      border: 1px solid var(--gray-800);
-      padding: 0 0.5rem;
-      text-align: center;
-
-      &::placeholder {
-        color: var(--gray-800);
-      }
+    &::placeholder {
+      color: var(--gray-800);
     }
+  }
 }
 
 .decrementButton {
-    background: transparent;
-    border: 0;
-    position: absolute;
-    left: 0.5rem;
+  background: transparent;
+  border: 0;
+  position: absolute;
+  left: 0.5rem;
 }
 
 .incrementButton {
-    background: transparent;
-    border: 0;
-    position: absolute;
-    right: 0.5rem;
+  background: transparent;
+  border: 0;
+  position: absolute;
+  right: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .buttonContainer {
+    width: 3.5rem;
+
+    input {
+      width: 3.5rem;
+      font-size: 0.875rem;
+    }
+  }
+
+  .decrementButton {
+    left: 0.25rem;
+  }
+
+  .incrementButton {
+    right: 0.25rem;
+  }
 }

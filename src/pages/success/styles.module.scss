@@ -1,6 +1,12 @@
 .successContainer {
-    max-width: 1120px;
+    max-width: 74rem;
     margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.successContent {
+    width: 100%;
+
     padding: 2rem;
     border-radius: 12px;
     background: var(--gray-300);
@@ -15,12 +21,14 @@
 
     h2 {
         font-size: 2rem;
+        text-align: center;
         color: var(--gray-700);
         margin-top: 1rem;
     }
 
     p {
         color: var(--gray-900);
+        text-align: center;
         margin-top: 0.25rem;
     }
 
@@ -30,12 +38,25 @@
         border-radius: 8px;
         background: var(--green-500);
         margin-top: 2rem;
+        width: fit-content;
         text-transform: uppercase;
         color: var(--white);
 
         &:hover {
             background: var(--green-400);
             transition: 0.1s;
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .successContent {
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        button {
+            padding: 0.75rem 1.25rem;
         }
     }
 }

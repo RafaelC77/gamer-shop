@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import Image from "next/future/image";
+import Image from "next/image";
 import { useContext, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { ChangeAmountButton } from "../../components/ChangeAmountButton";
@@ -52,14 +52,15 @@ export default function Product({ product }: ProductProps) {
   return (
     <main className={styles.productContainer}>
       <div className={styles.productContent}>
-        <div>
-          <Image
-            src={selectedImage}
-            width={400}
-            height={400}
-            alt=""
-            className={styles.detailImage}
-          />
+        <div className={styles.imagesWrapper}>
+          <div className={styles.detailImageContainer}>
+            <Image
+              src={selectedImage}
+              layout="fill"
+              alt=""
+              className={styles.detailImage}
+            />
+          </div>
 
           <ul className={styles.imagesList}>
             {product.images.map((image) => {

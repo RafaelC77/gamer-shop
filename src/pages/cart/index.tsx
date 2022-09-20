@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import { Trash } from "phosphor-react";
 import { useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
@@ -84,13 +84,13 @@ export default function Cart() {
               return (
                 <tr key={item.name}>
                   <td>
-                    <Image
-                      src={item.image}
-                      alt="Título do produto"
-                      width={96}
-                      height={96}
-                      className={styles.cartImage}
-                    />
+                    <div className={styles.imageContainer}>
+                      <Image
+                        src={item.image}
+                        alt="Título do produto"
+                        layout="fill"
+                      />
+                    </div>
                   </td>
                   <td>
                     <span>{item.name}</span>

@@ -33,7 +33,7 @@ export default function Product({ product }: ProductProps) {
     });
 
     toast.success("Item adicionado ao carrinho!", {
-      position: "top-right",
+      position: "top-center",
     });
   }
 

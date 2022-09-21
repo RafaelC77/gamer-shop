@@ -59,7 +59,7 @@ export default function Cart() {
     updateCart(newCart);
 
     toast.error("Produto removido do carrinho!", {
-      position: "top-right",
+      position: "top-center",
     });
   }
 

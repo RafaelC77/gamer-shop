@@ -21,7 +21,7 @@ export function Card({ title, image, price, slug }: CardProps) {
     setCartItem({ name: title, image, price, amount: 1 });
 
     toast.success("Item adicionado ao carrinho!", {
-      position: "top-right",
+      position: "top-center",
     });
   }
 

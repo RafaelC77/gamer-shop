@@ -25,6 +25,10 @@ Os produtos são cadastrados por um CMS (Sanity) e o pagamento é feito com o us
 - Stripe
 - React-Toastify
 
+## Deploy
+
+- [Gamer Shop](https://gamer-shop.vercel.app/)
+
 ## Instalar o projeto
 
 ```

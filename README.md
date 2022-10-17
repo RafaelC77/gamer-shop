@@ -40,3 +40,6 @@ yarn
 # executar o projeto
 yarn dev
 ```
+## Licença
+
+Projeto sob [licença](https://github.com/RafaelC77/gamer-shop/blob/main/LICENSE) MIT.

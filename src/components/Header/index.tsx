@@ -14,15 +14,15 @@ export function Header() {
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
         <Link href="/">
-          <a>
+          <a data-testid="link">
             <div className={styles.logoContainer}>
-              <Image src={logo} alt="" layout="fill" />
+              <Image src={logo} alt="Gamershop" layout="fill" />
             </div>
           </a>
         </Link>
 
         <Link href="/cart">
-          <a>
+          <a data-testid="cart">
             <div className={styles.cartIconContainer}>
               <ShoppingCart size={24} />
               {!isShoppingCartEmpty && <span>{shoppingCart?.length}</span>}

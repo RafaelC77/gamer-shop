@@ -21,8 +21,6 @@ describe("Banner Component", () => {
       />
     );
 
-    screen.logTestingPlaygroundURL();
-
     expect(screen.getByText("Banner description")).toBeInTheDocument();
     expect(screen.getByText(/10% off/i)).toBeInTheDocument();
     expect(screen.getByText("R$ 100,00")).toBeInTheDocument();

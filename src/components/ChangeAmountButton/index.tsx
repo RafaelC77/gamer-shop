@@ -14,7 +14,11 @@ export function ChangeAmountButton({
 }: ChangeAmountButtonProps) {
   return (
     <div className={styles.buttonContainer}>
-      <button className={styles.decrementButton} onClick={decreaseItem}>
+      <button
+        className={styles.decrementButton}
+        onClick={decreaseItem}
+        data-testid="decrease-button"
+      >
         <Minus />
       </button>
       <input
@@ -24,7 +28,11 @@ export function ChangeAmountButton({
         placeholder={String(itemAmount)}
         readOnly
       />
-      <button className={styles.incrementButton} onClick={increaseItem}>
+      <button
+        className={styles.incrementButton}
+        onClick={increaseItem}
+        data-testid="increase-button"
+      >
         <Plus />
       </button>
     </div>

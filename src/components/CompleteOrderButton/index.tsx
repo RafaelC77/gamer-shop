@@ -27,6 +27,7 @@ export function CompleteOrderButton() {
       type="button"
       onClick={handleOrder}
       className={styles.completeOrderButton}
+      disabled={shoppingCart.length === 0 ? true : false}
     >
       Finalizar pedido
     </button>

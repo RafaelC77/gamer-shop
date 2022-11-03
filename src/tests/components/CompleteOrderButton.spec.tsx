@@ -35,8 +35,6 @@ describe("CompleteOrderButton Component", () => {
       </CartContext.Provider>
     );
 
-    screen.logTestingPlaygroundURL();
-
     expect(
       screen.getByRole("button", {
         name: /finalizar pedido/i,

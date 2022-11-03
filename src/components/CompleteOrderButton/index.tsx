@@ -1,6 +1,10 @@
 import { useContext } from "react";
+import { toast } from "react-toastify";
+
 import { CartContext } from "../../contexts/CartContext";
+import { api } from "../../services/api";
 import { getStripeJs } from "../../services/stripe-js";
+
 import styles from "./CompleteOrderButton.module.scss";
 
 export function CompleteOrderButton() {
@@ -9,17 +13,15 @@ export function CompleteOrderButton() {
   async function handleOrder() {
     const stripe = await getStripeJs();
 
-    const response = await fetch("/api/complete-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(shoppingCart),
-    }).then((r) => r.json());
+    try {
+      const response = await api.post("/complete-order", shoppingCart);
 
-    if (response.status === 500) return;
-
-    stripe?.redirectToCheckout({ sessionId: response.id });
+      stripe?.redirectToCheckout({ sessionId: response.data.id });
+    } catch (error) {
+      toast.error("Houve um erro ao realizar o pedido!", {
+        position: "top-center",
+      });
+    }
   }
 
   return (
@@ -27,7 +29,7 @@ export function CompleteOrderButton() {
       type="button"
       onClick={handleOrder}
       className={styles.completeOrderButton}
-      disabled={shoppingCart.length === 0 ? true : false}
+      disabled={!shoppingCart.length}
     >
       Finalizar pedido
     </button>

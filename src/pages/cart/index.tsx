@@ -85,11 +85,7 @@ export default function Cart() {
                 <tr key={item.name}>
                   <td>
                     <div className={styles.imageContainer}>
-                      <Image
-                        src={item.image}
-                        alt="Título do produto"
-                        layout="fill"
-                      />
+                      <Image src={item.image} alt={item.name} layout="fill" />
                     </div>
                   </td>
                   <td>

@@ -81,8 +81,6 @@ describe("Product page", () => {
       />
     );
 
-    screen.logTestingPlaygroundURL();
-
     const secondImage = screen.getAllByRole("img")[2];
 
     fireEvent.click(secondImage);

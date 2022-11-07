@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Handbag } from "phosphor-react";
-import { useContext, useEffect, useLayoutEffect } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import styles from "./styles.module.scss";
 

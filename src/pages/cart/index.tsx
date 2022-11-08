@@ -103,7 +103,10 @@ export default function Cart() {
                     <span>{formatPrice(item.subTotal / 100)}</span>
                   </td>
                   <td>
-                    <button onClick={() => handleRemoveItem(item.name)}>
+                    <button
+                      onClick={() => handleRemoveItem(item.name)}
+                      data-testid="delete-button"
+                    >
                       <Trash weight="fill" size={24} />
                     </button>
                   </td>

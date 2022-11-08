@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { CartContext } from "../../contexts/CartContext";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { CartContext, CartContextProvider } from "../../contexts/CartContext";
 import Cart from "../../pages/cart";
 
 const cartContextValues = {
@@ -86,6 +86,84 @@ describe("Cart component", () => {
         <Cart />
       </CartContext.Provider>
     );
+
+    expect(screen.getByText(/não há itens no carrinho/i)).toBeInTheDocument();
+  });
+
+  it("Should decrease the item amount when user clicks on decrease button", () => {
+    const cartMock = [
+      {
+        name: "Product Name",
+        image: "http://testimage.com",
+        price: 10000,
+        amount: 2,
+      },
+    ];
+
+    const storageMock = jest.spyOn(Storage.prototype, "getItem");
+    storageMock.mockReturnValue(JSON.stringify(cartMock));
+
+    render(
+      <CartContextProvider>
+        <Cart />
+      </CartContextProvider>
+    );
+
+    const decreaseButton = screen.getByTestId("decrease-button");
+
+    fireEvent.click(decreaseButton);
+
+    expect(screen.getByRole("spinbutton")).toHaveAttribute("placeholder", "1");
+  });
+
+  it("Should increase the item amount when user clicks on increase button", () => {
+    const cartMock = [
+      {
+        name: "Product Name",
+        image: "http://testimage.com",
+        price: 10000,
+        amount: 1,
+      },
+    ];
+
+    const storageMock = jest.spyOn(Storage.prototype, "getItem");
+    storageMock.mockReturnValue(JSON.stringify(cartMock));
+
+    render(
+      <CartContextProvider>
+        <Cart />
+      </CartContextProvider>
+    );
+
+    const increaseButton = screen.getByTestId("increase-button");
+
+    fireEvent.click(increaseButton);
+
+    expect(screen.getByRole("spinbutton")).toHaveAttribute("placeholder", "2");
+  });
+
+  it("Should remove the item amount when user clicks on delete button", () => {
+    const cartMock = [
+      {
+        name: "Product Name",
+        image: "http://testimage.com",
+        price: 10000,
+        amount: 1,
+      },
+    ];
+
+    const storageMock = jest.spyOn(Storage.prototype, "getItem");
+    storageMock.mockReturnValue(JSON.stringify(cartMock));
+
+    render(
+      <CartContextProvider>
+        <Cart />
+      </CartContextProvider>
+    );
+
+    const deleteButton = screen.getByTestId("delete-button");
+
+    fireEvent.click(deleteButton);
 
     expect(screen.getByText(/não há itens no carrinho/i)).toBeInTheDocument();
   });

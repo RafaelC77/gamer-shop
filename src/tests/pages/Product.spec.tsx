@@ -1,6 +1,9 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { client, urlFor } from "../../services/sanity";
-import Product, { getStaticProps } from "../../pages/product/[slug]";
+import Product, {
+  getStaticProps,
+  getStaticPaths,
+} from "../../pages/product/[slug]";
 import { CartContext } from "../../contexts/CartContext";
 import { ToastContainer } from "react-toastify";
 
@@ -56,6 +59,32 @@ describe("Product page", () => {
     );
   });
 
+  it("Should get the list of paths", async () => {
+    const sanityClientMocked = jest.mocked(client.fetch);
+
+    sanityClientMocked.mockReturnValue([
+      {
+        slug: {
+          current: "product",
+        },
+      },
+    ] as any);
+
+    const response = await getStaticPaths();
+
+    expect(response).toEqual(
+      expect.objectContaining({
+        paths: [
+          {
+            params: {
+              slug: "product",
+            },
+          },
+        ],
+      })
+    );
+  });
+
   it("Should change the product amount", () => {
     render(<Product product={product} />);
 
@@ -65,6 +94,10 @@ describe("Product page", () => {
     fireEvent.click(increaseButton);
 
     expect(screen.getByRole("spinbutton")).toHaveAttribute("placeholder", "2");
+
+    fireEvent.click(decreaseButton);
+
+    expect(screen.getByRole("spinbutton")).toHaveAttribute("placeholder", "1");
 
     fireEvent.click(decreaseButton);
 

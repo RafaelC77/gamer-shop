@@ -1,6 +1,8 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { client, urlFor } from "../../services/sanity";
 import Product, { getStaticProps } from "../../pages/product/[slug]";
+import { CartContext } from "../../contexts/CartContext";
+import { ToastContainer } from "react-toastify";
 
 jest.mock("../../services/sanity");
 
@@ -93,5 +95,57 @@ describe("Product page", () => {
         expect.stringContaining("image2")
       );
     });
+  });
+
+  it("Should add product to cart when user clicks on add to cart button", () => {
+    const setCartItemMock = jest.fn();
+    const cartContextMock = {
+      shoppingCart: [],
+      setCartItem: setCartItemMock,
+      updateCart: jest.fn(),
+      resetCart: jest.fn(),
+    };
+
+    render(
+      <CartContext.Provider value={cartContextMock}>
+        <Product product={product} />
+      </CartContext.Provider>
+    );
+
+    const addToCartButton = screen.getByRole("button", {
+      name: /adicione ao carrinho/i,
+    });
+
+    fireEvent.click(addToCartButton);
+
+    expect(setCartItemMock).toBeCalled();
+  });
+
+  it("Should show a toast if product is added", async () => {
+    const cartContextMock = {
+      shoppingCart: [],
+      setCartItem: jest.fn(),
+      updateCart: jest.fn(),
+      resetCart: jest.fn(),
+    };
+
+    render(
+      <CartContext.Provider value={cartContextMock}>
+        <Product product={product} />
+        <ToastContainer />
+      </CartContext.Provider>
+    );
+
+    const addToCartButton = screen.getByRole("button", {
+      name: /adicione ao carrinho/i,
+    });
+
+    fireEvent.click(addToCartButton);
+
+    await waitFor(() =>
+      expect(
+        screen.getAllByText("Item adicionado ao carrinho!")[0]
+      ).toBeInTheDocument()
+    );
   });
 });

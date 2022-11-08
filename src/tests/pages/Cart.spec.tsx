@@ -79,4 +79,14 @@ describe("Cart component", () => {
 
     expect(screen.getByText("R$ 800,00")).toBeInTheDocument();
   });
+
+  it("Should display a message if cart is empty", () => {
+    render(
+      <CartContext.Provider value={{ ...cartContextValues, shoppingCart: [] }}>
+        <Cart />
+      </CartContext.Provider>
+    );
+
+    expect(screen.getByText(/não há itens no carrinho/i)).toBeInTheDocument();
+  });
 });

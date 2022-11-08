@@ -41,15 +41,6 @@ export default function Home({ banner, products }: HomeProps) {
     image,
     slug,
   } = banner;
-  const { updateCart } = useContext(CartContext);
-
-  useEffect(() => {
-    const storedState = localStorage.getItem("@gamer-shop:cart-1.0.0");
-
-    if (storedState) {
-      updateCart(JSON.parse(storedState));
-    }
-  }, []);
 
   return (
     <div>

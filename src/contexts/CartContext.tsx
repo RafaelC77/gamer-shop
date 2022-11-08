@@ -25,6 +25,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   const isMounted = useRef(false);
 
   useEffect(() => {
+    const storedState = localStorage.getItem("@gamer-shop:cart-1.0.0");
+
+    if (storedState) {
+      updateCart(JSON.parse(storedState));
+    }
+  }, []);
+
+  useEffect(() => {
     if (isMounted.current) {
       localStorage.setItem(
         "@gamer-shop:cart-1.0.0",

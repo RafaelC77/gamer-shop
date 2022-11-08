@@ -66,7 +66,7 @@ describe("Home Page", () => {
     );
   });
 
-  it("Should get data from local storage then update the cart", () => {
+  /*   it("Should get data from local storage then update the cart", () => {
     const banner = {
       productName: "product",
       description: "description",
@@ -114,5 +114,5 @@ describe("Home Page", () => {
 
     expect(storageMock).toBeCalled();
     expect(updateCartMock).toBeCalled();
-  });
+  }); */
 });

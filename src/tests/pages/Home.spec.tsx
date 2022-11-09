@@ -1,20 +1,49 @@
 import { client, urlFor } from "../../services/sanity";
 import Home, { getStaticProps } from "../../pages";
-import { render } from "@testing-library/react";
-import { CartContext } from "../../contexts/CartContext";
+import { fireEvent, render, screen, within } from "@testing-library/react";
+import { CartContextProvider } from "../../contexts/CartContext";
 import { Header } from "../../components/Header";
 
 jest.mock("../../services/sanity");
 
+const bannerPropsMock = {
+  productName: "Banner Product",
+  description: "Description",
+  discount: 10,
+  fullPrice: 10000,
+  largeText: "Large text",
+  image: "http://testimage.com",
+  slug: "slug",
+};
+
+const productsPropsMock = [
+  {
+    title: "Product Name",
+    image: "http://testimage.com",
+    price: 10000,
+    slug: "slug2",
+  },
+];
+
+beforeEach(() => {
+  const urlForSanityMock = jest.mocked(urlFor);
+  const urlMock = jest.fn(() => "http://imageurl.com");
+
+  urlForSanityMock.mockReturnValueOnce({
+    url: urlMock,
+  } as any);
+});
+
 describe("Home Page", () => {
+  it("Should render correctly", () => {
+    render(<Home banner={bannerPropsMock} products={productsPropsMock} />);
+
+    expect(screen.getByText(/banner product/i)).toBeInTheDocument();
+    expect(screen.getByText(/product name/i)).toBeInTheDocument();
+  });
+
   it("Should load initial data", async () => {
     const sanityMock = jest.mocked(client.fetch);
-    const urlForSanityMock = jest.mocked(urlFor);
-    const urlMock = jest.fn(() => "http://imageurl.com");
-
-    urlForSanityMock.mockReturnValueOnce({
-      url: urlMock,
-    } as any);
 
     sanityMock
       .mockResolvedValueOnce([
@@ -66,53 +95,38 @@ describe("Home Page", () => {
     );
   });
 
-  /*   it("Should get data from local storage then update the cart", () => {
-    const banner = {
-      productName: "product",
-      description: "description",
-      discount: 10,
-      fullPrice: 100,
-      largeText: "large text",
-      image: "image",
-      slug: "slug",
-    };
-
-    const products = [
-      {
-        title: "name",
-        image: "http://imageurl.com",
-        price: 10,
-        slug: "slug",
-      },
-    ];
-
-    const updateCartMock = jest.fn();
-
-    const cartContextMock = {
-      shoppingCart: [],
-      setCartItem: jest.fn(),
-      updateCart: updateCartMock,
-      resetCart: jest.fn(),
-    };
-
-    const urlForSanityMock = jest.mocked(urlFor);
-    const urlMock = jest.fn(() => "http://imageurl.com");
-
-    urlForSanityMock.mockReturnValue({
-      url: urlMock,
-    } as any);
-
-    const storageMock = jest.spyOn(Storage.prototype, "getItem");
-    storageMock.mockReturnValue(JSON.stringify({ key: "value" }));
-
+  it("Should add product to cart when user clicks on add button", () => {
     render(
-      <CartContext.Provider value={cartContextMock}>
+      <CartContextProvider>
         <Header />
-        <Home banner={banner} products={products} />
-      </CartContext.Provider>
+        <Home banner={bannerPropsMock} products={productsPropsMock} />
+      </CartContextProvider>
     );
 
-    expect(storageMock).toBeCalled();
-    expect(updateCartMock).toBeCalled();
-  }); */
+    const addToCartButton = screen.getByTestId("add-to-cart-button");
+
+    fireEvent.click(addToCartButton);
+
+    const cartItemsAmount = screen.getByTestId("cart-items-amount");
+
+    expect(cartItemsAmount).toBeVisible();
+  });
+
+  it("Should not add product to cart if it's already there", () => {
+    render(
+      <CartContextProvider>
+        <Header />
+        <Home banner={bannerPropsMock} products={productsPropsMock} />
+      </CartContextProvider>
+    );
+
+    const addToCartButton = screen.getByTestId("add-to-cart-button");
+
+    fireEvent.click(addToCartButton);
+    fireEvent.click(addToCartButton);
+
+    const cartItemsAmount = screen.getByTestId("cart-items-amount");
+
+    expect(within(cartItemsAmount).getByText("1")).toBeInTheDocument();
+  });
 });

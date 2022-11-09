@@ -114,6 +114,10 @@ describe("Cart component", () => {
     fireEvent.click(decreaseButton);
 
     expect(screen.getByRole("spinbutton")).toHaveAttribute("placeholder", "1");
+
+    fireEvent.click(decreaseButton);
+
+    expect(screen.getByRole("spinbutton")).toHaveAttribute("placeholder", "1");
   });
 
   it("Should increase the item amount when user clicks on increase button", () => {

@@ -1,11 +1,9 @@
 import Head from "next/head";
-import { useContext, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 
 import { Banner } from "../components/Banner";
 import { Products } from "../components/Products";
 import { client, urlFor } from "../services/sanity";
-import { CartContext } from "../contexts/CartContext";
 
 import "react-toastify/dist/ReactToastify.css";
 

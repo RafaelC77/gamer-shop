@@ -25,7 +25,11 @@ export function Header() {
           <a data-testid="cart">
             <div className={styles.cartIconContainer}>
               <ShoppingCart size={24} />
-              {!isShoppingCartEmpty && <span>{shoppingCart?.length}</span>}
+              {!isShoppingCartEmpty && (
+                <span data-testid="cart-items-amount">
+                  {shoppingCart?.length}
+                </span>
+              )}
             </div>
           </a>
         </Link>

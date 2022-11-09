@@ -43,7 +43,7 @@ export function Card({ title, image, price, slug }: CardProps) {
 
       <div className={styles.productInfo}>
         <span className={styles.productPrice}>{formatPrice(price / 100)}</span>
-        <button onClick={handleAddItem}>
+        <button onClick={handleAddItem} data-testid="add-to-cart-button">
           <Plus />
 
           <ShoppingCart />

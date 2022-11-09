@@ -1,14 +1,16 @@
-# gamer-shop
+# GamerShop
 
 Projeto pessoal de um e-commerce com produtos voltados para o mercado gamer.
-Neste projeto foi implementado uma listagem com todos os produtos disponíveis na loja.
-Além disso, possui um carrinho de compras e integração com uma página de pagamento.
+Neste projeto foi implementado uma listagem com os produtos disponíveis na loja.
+Além disso, possui um carrinho de compras e integração com página de pagamento.
 
 Os produtos são cadastrados por um CMS (Sanity) e o pagamento é feito com o uso do Stripe.
 
 Esse projeto utiliza a função getStaticProps, que possibilita a pré-renderização no momento da build, para que a página
 seja servida de forma estática, reduzindo o número de chamadas à API e beneficiando o SEO.  
 Outro benefício do Nextjs é a utilização das API routes para criar as sessões de checkout, evitando que as variáveis de ambiente sejam expostas no lado do cliente.
+
+Com uso do Jest e React Testing Library, foram implementados testes unitários e de integração.
 
 ## Tecnologias Utilizadas
 
@@ -18,6 +20,8 @@ Outro benefício do Nextjs é a utilização das API routes para criar as sessõ
 - Sanity
 - Stripe
 - React-Toastify
+- Jest
+- React Testing Library
 
 ## Layout Mobile
 

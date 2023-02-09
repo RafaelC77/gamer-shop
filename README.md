@@ -1,18 +1,12 @@
 # GamerShop
 
-Projeto pessoal de um e-commerce com produtos voltados para o mercado gamer.
-Neste projeto foi implementado uma listagem com os produtos disponíveis na loja.
-Além disso, possui um carrinho de compras e integração com página de pagamento.
+Developed as a personal project, an e-commerce with products aimed at the gamer market.
+On the main page, a list of products is displayed. Users can access a detailed page of each product
+and add/remove the desired amount to the shopping cart.
+This project was integrated with a CMS (Sanity) and Stripe, to manage the payment process.
+Also, unit and integration tests were implemented with Jest and React Testing Library.
 
-Os produtos são cadastrados por um CMS (Sanity) e o pagamento é feito com o uso do Stripe.
-
-Esse projeto utiliza a função getStaticProps, que possibilita a pré-renderização no momento da build, para que a página
-seja servida de forma estática, reduzindo o número de chamadas à API e beneficiando o SEO.  
-Outro benefício do Nextjs é a utilização das API routes para criar as sessões de checkout, evitando que as variáveis de ambiente sejam expostas no lado do cliente.
-
-Com uso do Jest e React Testing Library, foram implementados testes unitários e de integração.
-
-## Tecnologias Utilizadas
+## Libraries/Frameworks
 
 - NextJS
 - Typescript
@@ -38,21 +32,21 @@ Com uso do Jest e React Testing Library, foram implementados testes unitários e
 
 - [Gamer Shop](https://gamer-shop.vercel.app/)
 
-## Instalar o projeto
+## Running this project
 
 ```
-# clonar o reposítório
+# clone the repository
 $ git clone https://github.com/RafaelC77/gamer-shop.git
 
-# acessar a pasta do projeto 
+# access the project folder
 cd gamer-shop
 
-# instalar as dependências
+# install the project dependencies
 yarn
 
-# executar o projeto
+# run the project
 yarn dev
 ```
-## Licença
+## License
 
-Projeto sob [licença](https://github.com/RafaelC77/gamer-shop/blob/main/LICENSE) MIT.
+Project under [MIT license](https://github.com/RafaelC77/gamer-shop/blob/main/LICENSE).
